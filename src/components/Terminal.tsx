@@ -160,42 +160,44 @@ export default function Terminal({ onCommand }: TerminalProps) {
       </div>
 
       <div ref={contentRef} className="terminal-content">
-        <AnimatePresence>
-          {lines.filter(line => line).map((line, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="terminal-line"
-            >
-              {line.type === 'command' && (
-                <span className="terminal-prompt">{line.content}</span>
-              )}
-              {line.type === 'output' && (
-                <span className="terminal-output">{line.content}</span>
-              )}
-              {line.type === 'error' && (
-                <span className="terminal-output error">{line.content}</span>
-              )}
-              {line.type === 'success' && (
-                <span className="terminal-output success">{line.content}</span>
-              )}
-              {line.type === 'info' && (
-                <span className="terminal-output info">{line.content}</span>
-              )}
-              {line.type === 'warning' && (
-                <span className="terminal-output warning">{line.content}</span>
-              )}
-              {line.type === 'system' && (
-                <span className="terminal-output text-muted-foreground">{line.content}</span>
-              )}
-            </motion.div>
-          ))}
-        </AnimatePresence>
+        <div className="flex-1 overflow-y-auto">
+          <AnimatePresence>
+            {lines.filter(line => line).map((line, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="terminal-line"
+              >
+                {line.type === 'command' && (
+                  <span className="terminal-prompt">{line.content}</span>
+                )}
+                {line.type === 'output' && (
+                  <span className="terminal-output">{line.content}</span>
+                )}
+                {line.type === 'error' && (
+                  <span className="terminal-output error">{line.content}</span>
+                )}
+                {line.type === 'success' && (
+                  <span className="terminal-output success">{line.content}</span>
+                )}
+                {line.type === 'info' && (
+                  <span className="terminal-output info">{line.content}</span>
+                )}
+                {line.type === 'warning' && (
+                  <span className="terminal-output warning">{line.content}</span>
+                )}
+                {line.type === 'system' && (
+                  <span className="terminal-output text-muted-foreground">{line.content}</span>
+                )}
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
 
-        <form onSubmit={handleSubmit} className="flex items-center">
+        <form onSubmit={handleSubmit} className="flex items-center mt-2 flex-shrink-0">
           <span className="terminal-prompt">$ </span>
           <input
             ref={inputRef}

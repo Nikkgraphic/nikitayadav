@@ -134,7 +134,7 @@
   }
 
   .terminal-window {
-    @apply relative h-full w-full backdrop-blur-sm;
+    @apply relative h-full w-full backdrop-blur-sm flex flex-col;
     background: rgba(0, 0, 0, 0.8);
     border: 1px solid hsl(var(--border));
     box-shadow: var(--shadow-terminal);
@@ -158,9 +158,10 @@
   }
 
   .terminal-content {
-    @apply h-full overflow-y-auto p-4 font-mono text-sm;
+    @apply flex-1 overflow-y-auto p-4 font-mono text-sm flex flex-col;
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--primary)) transparent;
+    min-height: 0;
   }
 
   .terminal-content::-webkit-scrollbar {
