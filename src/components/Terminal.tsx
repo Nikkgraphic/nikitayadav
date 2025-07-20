@@ -161,7 +161,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
 
       <div ref={contentRef} className="terminal-content">
         <AnimatePresence>
-          {lines.map((line, index) => (
+          {lines.filter(line => line).map((line, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 10 }}
