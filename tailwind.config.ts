@@ -84,11 +84,33 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'terminal-glow': {
+					'0%, 100%': {
+						textShadow: '0 0 5px currentColor, 0 0 10px currentColor'
+					},
+					'50%': {
+						textShadow: '0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor'
+					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'matrix-rain': {
+					'0%': { transform: 'translateY(-100vh)' },
+					'100%': { transform: 'translateY(100vh)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'terminal-glow': 'terminal-glow 2s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'matrix-rain': 'matrix-rain 3s linear infinite'
+			},
+			fontFamily: {
+				'mono': ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace']
 			}
 		}
 	},
