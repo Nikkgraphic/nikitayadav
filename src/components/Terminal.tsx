@@ -210,27 +210,29 @@ export default function Terminal({ onCommand }: TerminalProps) {
         </div>
 
         {showInput && (
-          <motion.form 
-            onSubmit={handleSubmit} 
-            className="flex items-center mt-2 flex-shrink-0"
+          <motion.div 
+            className="flex items-center mt-4 flex-shrink-0"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <span className="terminal-prompt">gatere@portfolio:~$ </span>
-            <input
-              ref={inputRef}
-              type="text"
-              value={currentInput}
-              onChange={(e) => setCurrentInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="terminal-input flex-1"
-              disabled={isTyping}
-              autoComplete="off"
-              spellCheck="false"
-            />
-            {!isTyping && <span className="terminal-cursor"></span>}
-          </motion.form>
+            <form onSubmit={handleSubmit} className="flex items-center w-full">
+              <span className="terminal-prompt">gatere@portfolio:~$ </span>
+              <input
+                ref={inputRef}
+                type="text"
+                value={currentInput}
+                onChange={(e) => setCurrentInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="terminal-input flex-1"
+                disabled={isTyping}
+                autoComplete="off"
+                spellCheck="false"
+                autoFocus
+              />
+              {!isTyping && <span className="terminal-cursor"></span>}
+            </form>
+          </motion.div>
         )}
       </div>
     </div>
