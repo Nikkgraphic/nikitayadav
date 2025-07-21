@@ -198,23 +198,28 @@
   }
 
   .terminal-output {
-    @apply text-muted-foreground whitespace-pre-wrap;
+    @apply text-primary/80 whitespace-pre-wrap;
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.3);
   }
 
   .terminal-output.success {
     @apply text-primary;
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
   }
 
   .terminal-output.error {
     @apply text-destructive;
+    text-shadow: 0 0 10px hsl(var(--destructive) / 0.5);
   }
 
   .terminal-output.info {
     @apply text-accent;
+    text-shadow: 0 0 8px hsl(var(--accent) / 0.4);
   }
 
   .terminal-output.warning {
     @apply text-secondary;
+    text-shadow: 0 0 8px hsl(var(--secondary) / 0.4);
   }
 
   /* Neon glow effects */

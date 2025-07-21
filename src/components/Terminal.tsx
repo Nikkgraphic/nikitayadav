@@ -13,6 +13,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
   const [isTyping, setIsTyping] = useState(false);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const [showInput, setShowInput] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -32,46 +33,61 @@ export default function Terminal({ onCommand }: TerminalProps) {
 
   // Initialize with welcome message
   useEffect(() => {
+    const commandsGuide = [
+      { type: 'info' as const, content: '┌─ Available Commands ─────────────────────────────────────────┐' },
+      { type: 'info' as const, content: '│ help     - Show all available commands                      │' },
+      { type: 'info' as const, content: '│ about    - Learn more about me                              │' },
+      { type: 'info' as const, content: '│ skills   - View my technical skills                         │' },
+      { type: 'info' as const, content: '│ projects - Browse my portfolio projects                     │' },
+      { type: 'info' as const, content: '│ contact  - Get my contact information                       │' },
+      { type: 'info' as const, content: '│ clear    - Clear the terminal screen                        │' },
+      { type: 'info' as const, content: '└──────────────────────────────────────────────────────────────┘' },
+      { type: 'system' as const, content: '' },
+    ];
+
     const welcomeMessages = [
       { type: 'system' as const, content: 'Terminal initialized...' },
       { type: 'system' as const, content: 'Welcome to my portfolio terminal!' },
-      { type: 'info' as const, content: 'Type "help" to see available commands' },
       { type: 'system' as const, content: '' }
     ];
 
     let index = 0;
+    const allMessages = [...commandsGuide, ...welcomeMessages];
+    
     const interval = setInterval(() => {
-      if (index < welcomeMessages.length) {
-        setLines(prev => [...prev, welcomeMessages[index]]);
+      if (index < allMessages.length) {
+        setLines(prev => [...prev, allMessages[index]]);
         index++;
       } else {
         clearInterval(interval);
+        // Show input after all messages are typed
+        setTimeout(() => setShowInput(true), 300);
       }
-    }, 500);
+    }, 200);
 
     return () => clearInterval(interval);
   }, []);
 
   const typeMessage = useCallback(async (message: string, type: TerminalLine['type'] = 'output') => {
     setIsTyping(true);
-    const words = message.split(' ');
+    const chars = message.split('');
     let currentText = '';
 
-    for (let i = 0; i < words.length; i++) {
-      currentText += (i > 0 ? ' ' : '') + words[i];
+    for (let i = 0; i < chars.length; i++) {
+      currentText += chars[i];
       
       setLines(prev => {
         const newLines = [...prev];
         const lastLineIndex = newLines.length - 1;
-        if (newLines[lastLineIndex] && newLines[lastLineIndex].type === type) {
+        if (newLines[lastLineIndex] && newLines[lastLineIndex].type === type && i > 0) {
           newLines[lastLineIndex] = { type, content: currentText };
-        } else {
+        } else if (i === 0) {
           newLines.push({ type, content: currentText });
         }
         return newLines;
       });
       
-      await new Promise(resolve => setTimeout(resolve, 50));
+      await new Promise(resolve => setTimeout(resolve, 20));
     }
     setIsTyping(false);
   }, []);
@@ -197,21 +213,29 @@ export default function Terminal({ onCommand }: TerminalProps) {
           </AnimatePresence>
         </div>
 
-        <form onSubmit={handleSubmit} className="flex items-center mt-2 flex-shrink-0">
-          <span className="terminal-prompt">$ </span>
-          <input
-            ref={inputRef}
-            type="text"
-            value={currentInput}
-            onChange={(e) => setCurrentInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="terminal-input flex-1"
-            disabled={isTyping}
-            autoComplete="off"
-            spellCheck="false"
-          />
-          {!isTyping && <span className="terminal-cursor"></span>}
-        </form>
+        {showInput && (
+          <motion.form 
+            onSubmit={handleSubmit} 
+            className="flex items-center mt-2 flex-shrink-0"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <span className="terminal-prompt">$ </span>
+            <input
+              ref={inputRef}
+              type="text"
+              value={currentInput}
+              onChange={(e) => setCurrentInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="terminal-input flex-1"
+              disabled={isTyping}
+              autoComplete="off"
+              spellCheck="false"
+            />
+            {!isTyping && <span className="terminal-cursor"></span>}
+          </motion.form>
+        )}
       </div>
     </div>
   );
