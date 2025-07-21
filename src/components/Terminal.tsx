@@ -34,20 +34,16 @@ export default function Terminal({ onCommand }: TerminalProps) {
   // Initialize with welcome message
   useEffect(() => {
     const commandsGuide = [
-      { type: 'info' as const, content: '┌─ Available Commands ─────────────────────────────────────────┐' },
-      { type: 'info' as const, content: '│ help     - Show all available commands                      │' },
-      { type: 'info' as const, content: '│ about    - Learn more about me                              │' },
-      { type: 'info' as const, content: '│ skills   - View my technical skills                         │' },
-      { type: 'info' as const, content: '│ projects - Browse my portfolio projects                     │' },
-      { type: 'info' as const, content: '│ contact  - Get my contact information                       │' },
-      { type: 'info' as const, content: '│ clear    - Clear the terminal screen                        │' },
-      { type: 'info' as const, content: '└──────────────────────────────────────────────────────────────┘' },
+      { type: 'info' as const, content: 'help | about | projects | skills | experience | contact | education | certifications | leadership | sudo | clear' },
       { type: 'system' as const, content: '' },
     ];
 
     const welcomeMessages = [
-      { type: 'system' as const, content: 'Terminal initialized...' },
-      { type: 'system' as const, content: 'Welcome to my portfolio terminal!' },
+      { type: 'command' as const, content: 'gatere@portfolio:~$ welcome' },
+      { type: 'output' as const, content: "Hi, I'm Mark Gatere, a Software & AI Engineer." },
+      { type: 'system' as const, content: '' },
+      { type: 'output' as const, content: "Welcome to my interactive 'AI powered' portfolio terminal!" },
+      { type: 'output' as const, content: "Type 'help' to see available commands." },
       { type: 'system' as const, content: '' }
     ];
 
@@ -63,7 +59,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
         // Show input after all messages are typed
         setTimeout(() => setShowInput(true), 300);
       }
-    }, 200);
+    }, 800);
 
     return () => clearInterval(interval);
   }, []);
@@ -101,7 +97,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
     setHistoryIndex(-1);
 
     // Add command line to terminal
-    setLines(prev => [...prev, { type: 'command', content: `$ ${trimmedCommand}` }]);
+    setLines(prev => [...prev, { type: 'command', content: `gatere@portfolio:~$ ${trimmedCommand}` }]);
 
     // Execute command
     const response = await commandHandler(trimmedCommand);
@@ -221,7 +217,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <span className="terminal-prompt">$ </span>
+            <span className="terminal-prompt">gatere@portfolio:~$ </span>
             <input
               ref={inputRef}
               type="text"
