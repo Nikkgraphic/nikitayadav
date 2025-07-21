@@ -225,6 +225,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
                 onChange={(e) => setCurrentInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 className="terminal-input flex-1"
+                placeholder="type here"
                 disabled={isTyping}
                 autoComplete="off"
                 spellCheck="false"
