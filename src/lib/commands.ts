@@ -70,21 +70,6 @@ const projects: Project[] = [
   }
 ];
 
-const asciiArt = `
-    ╔══════════════════════════════════════╗
-    ║          ALEX DEVELOPER              ║
-    ║     Full Stack Developer & AI        ║
-    ║           Enthusiast                 ║
-    ╚══════════════════════════════════════╝
-           ▲
-          / \\
-         /   \\
-        /_____\\
-       /       \\
-      /  █   █  \\
-     /     ▼     \\
-    /_____________\\
-`;
 
 // Command implementations
 const commands: Command[] = [
@@ -123,8 +108,6 @@ Type any command to get started!
     description: "Show personal information",
     execute: async () => {
       const aboutText = `
-${asciiArt}
-
 Name: ${personalInfo.name}
 Title: ${personalInfo.title}
 Location: ${personalInfo.location}
@@ -138,32 +121,32 @@ ${personalInfo.education.map(item => `  • ${item}`).join('\n')}
 Experience:
 ${personalInfo.experience.map(item => `  • ${item}`).join('\n')}
       `;
-      return { type: 'success', content: aboutText.trim() };
+      return { type: 'output', content: aboutText.trim() };
     }
   },
   {
     name: "skills",
     description: "Display technical skills",
     execute: async () => {
-      let skillsText = "\n🚀 Technical Skills & Expertise\n" + "=".repeat(35) + "\n\n";
+      let skillsText = "\nTechnical Skills & Expertise\n\n";
       
       skills.forEach(skill => {
         skillsText += `${skill.category}:\n`;
-        skillsText += skill.items.map(item => `  ▸ ${item}`).join('\n');
+        skillsText += skill.items.map(item => `  • ${item}`).join('\n');
         skillsText += '\n\n';
       });
       
-      return { type: 'success', content: skillsText.trim() };
+      return { type: 'output', content: skillsText.trim() };
     }
   },
   {
     name: "projects",
     description: "List portfolio projects",
     execute: async () => {
-      let projectsText = "\n💼 Portfolio Projects\n" + "=".repeat(20) + "\n\n";
+      let projectsText = "\nPortfolio Projects\n\n";
       
       projects.forEach((project, index) => {
-        projectsText += `${index + 1}. ${project.name}${project.featured ? ' ⭐' : ''}\n`;
+        projectsText += `${index + 1}. ${project.name}${project.featured ? ' (Featured)' : ''}\n`;
         projectsText += `   ${project.description}\n`;
         projectsText += `   Tech: ${project.technologies.join(', ')}\n`;
         if (project.url) projectsText += `   Live: ${project.url}\n`;
@@ -171,7 +154,7 @@ ${personalInfo.experience.map(item => `  • ${item}`).join('\n')}
         projectsText += '\n';
       });
       
-      return { type: 'success', content: projectsText.trim() };
+      return { type: 'output', content: projectsText.trim() };
     }
   },
   {
@@ -179,7 +162,7 @@ ${personalInfo.experience.map(item => `  • ${item}`).join('\n')}
     description: "View resume information",
     execute: async () => {
       const resumeText = `
-📄 Resume & Experience
+Resume & Experience
 
 ${personalInfo.name}
 ${personalInfo.title}
@@ -193,11 +176,11 @@ ${personalInfo.education.map(item => `  • ${item}`).join('\n')}
 
 Key Skills: ${skills.flatMap(s => s.items).slice(0, 8).join(', ')}
 
-📎 Download full resume: /resume.pdf
-💼 LinkedIn: /linkedin
-🐙 GitHub: /github
+Download full resume: /resume.pdf
+LinkedIn: /linkedin
+GitHub: /github
       `;
-      return { type: 'info', content: resumeText.trim() };
+      return { type: 'output', content: resumeText.trim() };
     }
   },
   {
@@ -205,18 +188,18 @@ Key Skills: ${skills.flatMap(s => s.items).slice(0, 8).join(', ')}
     description: "Show contact information",
     execute: async () => {
       const contactText = `
-📧 Let's Connect!
+Let's Connect!
 
 Email: ${personalInfo.email}
 Location: ${personalInfo.location}
 
-💬 I'm always open to discussing:
+I'm always open to discussing:
   • New opportunities
   • Exciting projects  
   • Tech collaborations
   • AI/ML innovations
 
-🔗 Find me online:
+Find me online:
   • LinkedIn: linkedin.com/in/alexdev
   • GitHub: github.com/alexdev
   • Twitter: @alexdev
@@ -224,7 +207,7 @@ Location: ${personalInfo.location}
 
 Feel free to reach out anytime!
       `;
-      return { type: 'info', content: contactText.trim() };
+      return { type: 'output', content: contactText.trim() };
     }
   },
   {
@@ -264,13 +247,6 @@ For now, you can explore other commands like:
 
 Type 'help' for all available commands!
       `;
-    }
-  },
-  {
-    name: "ascii",
-    description: "Display ASCII art",
-    execute: async () => {
-      return { type: 'success', content: asciiArt };
     }
   },
   {
