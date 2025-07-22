@@ -2,9 +2,9 @@ import { Command, TerminalLine, Project, Skill, PersonalInfo } from '../types/te
 
 // Portfolio data - customize this with your actual information
 const personalInfo: PersonalInfo = {
-  name: "Suraj Yadav",
+  name: "Nikita Yadav",
   title: "Data Analyst",
-  email: "0816surajyadav@gmail.com",
+  email: "0816nikitayadav@gmail.com",
   location: "Indore, India",
   bio: "Highly motivated Data Analyst with hands-on experience in data scraping, preprocessing, and enrichment using Python and APIs like Groq/OpenAI. Skilled in designing data pipelines, cleaning large datasets using Pandas and NumPy, and integrating data into MongoDB for scalable analysis. Proficient in visual analytics using Power BI and Excel, with strong understanding of EDA, cloud workflows, and collaboration in cross-functional teams.",
   education: [
@@ -52,7 +52,7 @@ const projects: Project[] = [
     name: "US Logistics Tech Strategy Research",
     description: "Scraped data on top US logistics companies from multiple sources using Scrapy. Preprocessed data using Pandas and NumPy to clean and structure key company attributes. Integrated Groq API to enrich company profiles with ARR growth insights and tech stack data. Uploaded structured datasets to MongoDB for scalable access and analysis.",
     technologies: ["Python", "WebScraper", "Pandas", "MongoDB", "Groq API"],
-    github: "https://github.com/1608Suraj",
+    github: "https://github.com/1608Nikita",
     featured: true
   },
   {
@@ -60,7 +60,7 @@ const projects: Project[] = [
     name: "AI Chatbot using Groq & OpenAI",
     description: "Built a conversational chatbot using OpenAI for generating human-like responses. Integrated Groq API for low-latency language processing. Deployed via Streamlit to offer a user-friendly web interface. Designed modular intent handling for extensibility and domain-specific customization.",
     technologies: ["Python", "Groq API", "OpenAI API", "Streamlit"],
-    github: "https://github.com/1608Suraj",
+    github: "https://github.com/1608Nikita",
     featured: true
   },
   {
@@ -68,7 +68,7 @@ const projects: Project[] = [
     name: "Email Automation System",
     description: "Automated email sending using Python's SMTP libraries for bulk communication. Integrated Pandas to manage recipient data from Excel sheets. Implemented error handling and logging for failed deliveries and retries. Scheduled scripts to run periodically using task schedulers.",
     technologies: ["Python", "SMTP", "Pandas"],
-    github: "https://github.com/1608Suraj"
+    github: "https://github.com/1608Nikita"
   }
 ];
 
@@ -190,10 +190,10 @@ GitHub: /github
     description: "Show contact information or open social links",
     execute: async (args: string[]) => {
       const socialLinks = {
-        insta: "https://www.instagram.com/_suraj.py?igsh=MWd3bzFvangyZHNkeQ==",
-        instagram: "https://www.instagram.com/_suraj.py?igsh=MWd3bzFvangyZHNkeQ==",
-        linkedin: "https://www.linkedin.com/in/suraj-yadav-5620902b2/",
-        github: "https://github.com/1608Suraj"
+        insta: "https://www.instagram.com/_nikita.py?igsh=MWd3bzFvangyZHNkeQ==",
+        instagram: "https://www.instagram.com/_nikita.py?igsh=MWd3bzFvangyZHNkeQ==",
+        linkedin: "https://www.linkedin.com/in/nikita-yadav-5620902b2/",
+        github: "https://github.com/1608Nikita"
       };
 
       // Handle social media redirection
@@ -222,9 +222,9 @@ I'm always open to discussing:
 Phone: +91 8085546767
 
 Find me online:
-  • LinkedIn: https://www.linkedin.com/in/suraj-yadav-5620902b2/
-  • GitHub: https://github.com/1608Suraj
-  • Instagram: https://www.instagram.com/_suraj.py?igsh=MWd3bzFvangyZHNkeQ==
+  • LinkedIn: https://www.linkedin.com/in/nikita-yadav-5620902b2/
+  • GitHub: https://github.com/1608Nikita
+  • Instagram: https://www.instagram.com/_nikita.py?igsh=MWd3bzFvangyZHNkeQ==
 
 Usage: 'contact [platform]' to open directly (insta, linkedin, github)
 
@@ -276,7 +276,7 @@ Type 'help' for all available commands!
     name: "whoami",
     description: "Show current user",
     execute: async () => {
-      return `portfolio-visitor@surajyadav-terminal:~$`;
+      return `portfolio-visitor@nikitayadav-terminal:~$`;
     }
   },
   {

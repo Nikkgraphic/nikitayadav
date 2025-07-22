@@ -39,8 +39,8 @@ export default function Terminal({ onCommand }: TerminalProps) {
     ];
 
     const welcomeMessages = [
-      { type: 'command' as const, content: 'suraj@portfolio:~$ welcome' },
-      { type: 'output' as const, content: "Hi, I'm Suraj Yadav, a Data Analyst." },
+      { type: 'command' as const, content: 'nikita@portfolio:~$ welcome' },
+      { type: 'output' as const, content: "Hi, I'm Nikita Yadav, a Data Analyst." },
       { type: 'system' as const, content: '' },
       { type: 'output' as const, content: "Welcome to my interactive 'AI powered' portfolio terminal!" },
       { type: 'output' as const, content: "Type 'help' to see available commands." },
@@ -97,7 +97,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
     setHistoryIndex(-1);
 
     // Add command line to terminal
-    setLines(prev => [...prev, { type: 'command', content: `suraj@portfolio:~$ ${trimmedCommand}` }]);
+    setLines(prev => [...prev, { type: 'command', content: `nikita@portfolio:~$ ${trimmedCommand}` }]);
 
     // Execute command
     const response = await commandHandler(trimmedCommand);
@@ -164,7 +164,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
           <div className="terminal-button bg-secondary"></div>
           <div className="terminal-button bg-primary"></div>
         </div>
-        <div className="terminal-title">SurajYadav@portfolio</div>
+        <div className="terminal-title">NikitaYadav@portfolio</div>
         <div className="flex items-center space-x-2">
           <span className="text-xs text-muted-foreground">Connected</span>
           <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
@@ -217,7 +217,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
             transition={{ duration: 0.3 }}
           >
             <form onSubmit={handleSubmit} className="flex items-center w-full">
-              <span className="terminal-prompt">suraj@portfolio:~$ </span>
+              <span className="terminal-prompt">nikita@portfolio:~$ </span>
               <input
                 ref={inputRef}
                 type="text"
