@@ -33,26 +33,25 @@ export default function Terminal({ onCommand }: TerminalProps) {
 
   // Initialize with welcome message
   useEffect(() => {
-    const commandsGuide = [
-      { type: 'info' as const, content: 'help | about | projects | skills | experience | contact | education | certifications | leadership | sudo | clear' },
-      { type: 'system' as const, content: '' },
-    ];
-
     const welcomeMessages = [
-      { type: 'command' as const, content: 'nikita@portfolio:~$ welcome' },
-      { type: 'output' as const, content: "Hi, I'm Nikita Yadav, a Graphic & UI/UX Designer." },
+      { type: 'system' as const, content: 'Microsoft Windows [Version 10.0.26100.H652]' },
+      { type: 'system' as const, content: '(c) Microsoft Corporation. All rights reserved.' },
       { type: 'system' as const, content: '' },
-      { type: 'output' as const, content: "Welcome to my interactive 'AI powered' portfolio terminal!" },
+
+      { type: 'command' as const, content: 'C:\\Users\\nikita>' },
+      { type: 'system' as const, content: '' },
+      { type: 'output' as const, content: "Hi, I'm Nikita Yadav, a Graphic & UI/UX Designer." },
+      { type: 'output' as const, content: "Welcome to my interactive portfolio terminal!" },
       { type: 'output' as const, content: "Type 'help' to see available commands." },
-      { type: 'system' as const, content: '' }
+      { type: 'system' as const, content: '' },
+      { type: 'info' as const, content: 'help | about | projects | skills | contact | clear' }
     ];
 
     let index = 0;
-    const allMessages = [...commandsGuide, ...welcomeMessages];
     
     const interval = setInterval(() => {
-      if (index < allMessages.length) {
-        setLines(prev => [...prev, allMessages[index]]);
+      if (index < welcomeMessages.length) {
+        setLines(prev => [...prev, welcomeMessages[index]]);
         index++;
       } else {
         clearInterval(interval);
@@ -97,7 +96,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
     setHistoryIndex(-1);
 
     // Add command line to terminal
-    setLines(prev => [...prev, { type: 'command', content: `nikita@portfolio:~$ ${trimmedCommand}` }]);
+    setLines(prev => [...prev, { type: 'command', content: `C:\\Users\\nikita>${trimmedCommand}` }]);
 
     // Execute command
     const response = await commandHandler(trimmedCommand);
@@ -164,7 +163,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
           <div className="terminal-button bg-secondary"></div>
           <div className="terminal-button bg-primary"></div>
         </div>
-        <div className="terminal-title">NikitaYadav@portfolio</div>
+        <div className="terminal-title">Administrator: Command Prompt - NikitaYadav@portfolio</div>
         <div className="flex items-center space-x-2">
           <span className="text-xs text-muted-foreground">Connected</span>
           <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
@@ -217,7 +216,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
             transition={{ duration: 0.3 }}
           >
             <form onSubmit={handleSubmit} className="flex items-center w-full">
-              <span className="terminal-prompt">nikita@portfolio:~$ </span>
+              <span className="terminal-prompt">{"C:\\Users\\nikita>"}</span>
               <input
                 ref={inputRef}
                 type="text"
