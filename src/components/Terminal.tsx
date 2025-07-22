@@ -164,7 +164,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
           <div className="terminal-button bg-secondary"></div>
           <div className="terminal-button bg-primary"></div>
         </div>
-        <div className="terminal-title">portfolio@terminal:~</div>
+        <div className="terminal-title">SurajYadav@portfolio</div>
         <div className="flex items-center space-x-2">
           <span className="text-xs text-muted-foreground">Connected</span>
           <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
