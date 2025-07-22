@@ -187,8 +187,26 @@ GitHub: /github
   },
   {
     name: "contact",
-    description: "Show contact information",
-    execute: async () => {
+    description: "Show contact information or open social links",
+    execute: async (args: string[]) => {
+      const socialLinks = {
+        insta: "https://www.instagram.com/_suraj.py?igsh=MWd3bzFvangyZHNkeQ==",
+        instagram: "https://www.instagram.com/_suraj.py?igsh=MWd3bzFvangyZHNkeQ==",
+        linkedin: "https://www.linkedin.com/in/suraj-yadav-5620902b2/",
+        github: "https://github.com/1608Suraj"
+      };
+
+      // Handle social media redirection
+      if (args.length > 0) {
+        const platform = args[0].toLowerCase();
+        if (socialLinks[platform as keyof typeof socialLinks]) {
+          window.open(socialLinks[platform as keyof typeof socialLinks], '_blank');
+          return { type: 'output', content: `Opening ${platform}... 🚀` };
+        } else {
+          return { type: 'error', content: `Unknown platform: ${platform}. Available: insta, linkedin, github` };
+        }
+      }
+
       const contactText = `
 Let's Connect!
 
@@ -207,6 +225,8 @@ Find me online:
   • LinkedIn: https://www.linkedin.com/in/suraj-yadav-5620902b2/
   • GitHub: https://github.com/1608Suraj
   • Instagram: https://www.instagram.com/_suraj.py?igsh=MWd3bzFvangyZHNkeQ==
+
+Usage: 'contact [platform]' to open directly (insta, linkedin, github)
 
 Feel free to reach out anytime!
       `;
