@@ -2,71 +2,73 @@ import { Command, TerminalLine, Project, Skill, PersonalInfo } from '../types/te
 
 // Portfolio data - customize this with your actual information
 const personalInfo: PersonalInfo = {
-  name: "Alex Developer",
-  title: "Full Stack Developer & AI Enthusiast",
-  email: "alex@example.com",
-  location: "San Francisco, CA",
-  bio: "Passionate developer with 5+ years of experience building scalable web applications and AI-powered solutions. Love creating immersive user experiences and solving complex problems.",
+  name: "Suraj Yadav",
+  title: "Data Analyst",
+  email: "0816surajyadav@gmail.com",
+  location: "Indore, India",
+  bio: "Highly motivated Data Analyst with hands-on experience in data scraping, preprocessing, and enrichment using Python and APIs like Groq/OpenAI. Skilled in designing data pipelines, cleaning large datasets using Pandas and NumPy, and integrating data into MongoDB for scalable analysis. Proficient in visual analytics using Power BI and Excel, with strong understanding of EDA, cloud workflows, and collaboration in cross-functional teams.",
   education: [
-    "B.S. Computer Science - Stanford University (2019)",
-    "Machine Learning Certification - Coursera (2021)"
+    "Bachelor of Science (B.Sc.) in Computer Science - Holkar Science College, Devi Ahilya Vishwavidyalaya (DAVV), Indore"
   ],
   experience: [
-    "Senior Developer at TechCorp (2021-Present)",
-    "Full Stack Developer at StartupXYZ (2019-2021)",
-    "Software Engineering Intern at BigTech (2018)"
+    "Data Analyst Trainee at Debugshala (Feb 2025 – Present)"
   ]
 };
 
 const skills: Skill[] = [
   {
-    category: "Frontend",
-    items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Three.js", "Vue.js"]
+    category: "Languages",
+    items: ["Python", "SQL"]
   },
   {
-    category: "Backend", 
-    items: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Redis", "GraphQL"]
+    category: "Libraries", 
+    items: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Scrapy"]
   },
   {
-    category: "AI/ML",
-    items: ["OpenAI API", "TensorFlow", "PyTorch", "LangChain", "Computer Vision"]
+    category: "Data Tools",
+    items: ["Power BI", "Excel (Advanced)", "Google Colab"]
   },
   {
-    category: "DevOps",
-    items: ["Docker", "AWS", "Vercel", "GitHub Actions", "Kubernetes"]
+    category: "Databases",
+    items: ["MySQL", "MongoDB"]
   },
   {
-    category: "Tools",
-    items: ["Git", "VS Code", "Figma", "Postman", "Linear", "Notion"]
+    category: "Frameworks",
+    items: ["Streamlit", "Flask (Basic)", "Django (Learning Phase)"]
+  },
+  {
+    category: "APIs & Concepts",
+    items: ["Groq API", "OpenAI API", "RESTful APIs", "EDA", "OOP", "Data Structures", "API Integration", "Error Handling"]
+  },
+  {
+    category: "Version Control",
+    items: ["Git", "GitHub"]
   }
 ];
 
 const projects: Project[] = [
   {
     id: "1",
-    name: "AI Code Assistant",
-    description: "Built an intelligent code completion tool using OpenAI's GPT-4. Features include real-time code suggestions, bug detection, and documentation generation.",
-    technologies: ["React", "Node.js", "OpenAI API", "TypeScript"],
-    url: "https://ai-assistant.demo.com",
-    github: "https://github.com/alex/ai-assistant",
+    name: "US Logistics Tech Strategy Research",
+    description: "Scraped data on top US logistics companies from multiple sources using Scrapy. Preprocessed data using Pandas and NumPy to clean and structure key company attributes. Integrated Groq API to enrich company profiles with ARR growth insights and tech stack data. Uploaded structured datasets to MongoDB for scalable access and analysis.",
+    technologies: ["Python", "WebScraper", "Pandas", "MongoDB", "Groq API"],
+    github: "https://github.com/1608Suraj",
     featured: true
   },
   {
     id: "2", 
-    name: "3D Portfolio Website",
-    description: "Interactive terminal-style portfolio with Three.js animations and AI-powered chat functionality.",
-    technologies: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
-    url: "https://portfolio.demo.com",
-    github: "https://github.com/alex/portfolio",
+    name: "AI Chatbot using Groq & OpenAI",
+    description: "Built a conversational chatbot using OpenAI for generating human-like responses. Integrated Groq API for low-latency language processing. Deployed via Streamlit to offer a user-friendly web interface. Designed modular intent handling for extensibility and domain-specific customization.",
+    technologies: ["Python", "Groq API", "OpenAI API", "Streamlit"],
+    github: "https://github.com/1608Suraj",
     featured: true
   },
   {
     id: "3",
-    name: "E-commerce Platform",
-    description: "Full-stack e-commerce solution with real-time inventory, payment processing, and admin dashboard.",
-    technologies: ["Next.js", "PostgreSQL", "Stripe", "Prisma"],
-    url: "https://shop.demo.com",
-    github: "https://github.com/alex/ecommerce"
+    name: "Email Automation System",
+    description: "Automated email sending using Python's SMTP libraries for bulk communication. Integrated Pandas to manage recipient data from Excel sheets. Implemented error handling and logging for failed deliveries and retries. Scheduled scripts to run periodically using task schedulers.",
+    technologies: ["Python", "SMTP", "Pandas"],
+    github: "https://github.com/1608Suraj"
   }
 ];
 
@@ -199,11 +201,12 @@ I'm always open to discussing:
   • Tech collaborations
   • AI/ML innovations
 
+Phone: +91 8085546767
+
 Find me online:
-  • LinkedIn: linkedin.com/in/alexdev
-  • GitHub: github.com/alexdev
-  • Twitter: @alexdev
-  • Portfolio: alexdev.com
+  • LinkedIn: https://www.linkedin.com/in/suraj-yadav-5620902b2/
+  • GitHub: https://github.com/1608Suraj
+  • Instagram: https://www.instagram.com/_suraj.py?igsh=MWd3bzFvangyZHNkeQ==
 
 Feel free to reach out anytime!
       `;
@@ -253,7 +256,7 @@ Type 'help' for all available commands!
     name: "whoami",
     description: "Show current user",
     execute: async () => {
-      return `portfolio-visitor@alexdev-terminal:~$`;
+      return `portfolio-visitor@surajyadav-terminal:~$`;
     }
   },
   {

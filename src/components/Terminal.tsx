@@ -39,8 +39,8 @@ export default function Terminal({ onCommand }: TerminalProps) {
     ];
 
     const welcomeMessages = [
-      { type: 'command' as const, content: 'gatere@portfolio:~$ welcome' },
-      { type: 'output' as const, content: "Hi, I'm Mark Gatere, a Software & AI Engineer." },
+      { type: 'command' as const, content: 'suraj@portfolio:~$ welcome' },
+      { type: 'output' as const, content: "Hi, I'm Suraj Yadav, a Data Analyst." },
       { type: 'system' as const, content: '' },
       { type: 'output' as const, content: "Welcome to my interactive 'AI powered' portfolio terminal!" },
       { type: 'output' as const, content: "Type 'help' to see available commands." },
@@ -97,7 +97,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
     setHistoryIndex(-1);
 
     // Add command line to terminal
-    setLines(prev => [...prev, { type: 'command', content: `gatere@portfolio:~$ ${trimmedCommand}` }]);
+    setLines(prev => [...prev, { type: 'command', content: `suraj@portfolio:~$ ${trimmedCommand}` }]);
 
     // Execute command
     const response = await commandHandler(trimmedCommand);
@@ -217,7 +217,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
             transition={{ duration: 0.3 }}
           >
             <form onSubmit={handleSubmit} className="flex items-center w-full">
-              <span className="terminal-prompt">gatere@portfolio:~$ </span>
+              <span className="terminal-prompt">suraj@portfolio:~$ </span>
               <input
                 ref={inputRef}
                 type="text"
