@@ -210,7 +210,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
 
         {showInput && (
           <motion.div 
-            className="flex items-center mt-4 flex-shrink-0"
+            className="flex items-center mt-2"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
@@ -224,7 +224,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
                 onChange={(e) => setCurrentInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 className="terminal-input flex-1"
-                placeholder="type here"
+                placeholder=""
                 disabled={isTyping}
                 autoComplete="off"
                 spellCheck="false"
