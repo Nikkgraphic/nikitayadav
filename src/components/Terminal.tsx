@@ -40,7 +40,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
 
     const welcomeMessages = [
       { type: 'command' as const, content: 'nikita@portfolio:~$ welcome' },
-      { type: 'output' as const, content: "Hi, I'm Nikita Yadav, a Data Analyst." },
+      { type: 'output' as const, content: "Hi, I'm Nikita Yadav, a Graphic & UI/UX Designer." },
       { type: 'system' as const, content: '' },
       { type: 'output' as const, content: "Welcome to my interactive 'AI powered' portfolio terminal!" },
       { type: 'output' as const, content: "Type 'help' to see available commands." },

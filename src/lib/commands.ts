@@ -3,71 +3,59 @@ import { Command, TerminalLine, Project, Skill, PersonalInfo } from '../types/te
 // Portfolio data - customize this with your actual information
 const personalInfo: PersonalInfo = {
   name: "Nikita Yadav",
-  title: "Data Analyst",
-  email: "0816nikitayadav@gmail.com",
-  location: "Indore, India",
-  bio: "Highly motivated Data Analyst with hands-on experience in data scraping, preprocessing, and enrichment using Python and APIs like Groq/OpenAI. Skilled in designing data pipelines, cleaning large datasets using Pandas and NumPy, and integrating data into MongoDB for scalable analysis. Proficient in visual analytics using Power BI and Excel, with strong understanding of EDA, cloud workflows, and collaboration in cross-functional teams.",
+  title: "Graphic & UI/UX Designer",
+  email: "nikkyadav63@gmail.com",
+  location: "Indore, Madhya Pradesh, 452001",
+  bio: "Creative and detail-oriented Graphic & UI/UX Designer with a strong foundation in digital design tools and a passion for creating user-centered visual experiences. Eager to contribute innovative ideas and artistic skills to a dynamic design team. Currently seeking entry-level opportunities to begin my career in the design industry.",
   education: [
-    "Bachelor of Science (B.Sc.) in Computer Science - Holkar Science College, Devi Ahilya Vishwavidyalaya (DAVV), Indore"
+    "Bachelor of Computer Applications (BCA) - Holkar Science College, Indore"
   ],
   experience: [
-    "Data Analyst Trainee at Debugshala (Feb 2025 – Present)"
+    "Fresher - Visual Design, Indore. Eager to learn and contribute. Worked on personal and academic projects using professional tools."
   ]
 };
 
 const skills: Skill[] = [
   {
+    category: "Design Software",
+    items: ["Adobe Illustrator", "Adobe Photoshop", "CorelDRAW", "Figma"]
+  },
+  {
+    category: "Design Skills", 
+    items: ["UI/UX Design", "Wireframing & Prototyping", "Typography & Layout Design"]
+  },
+  {
     category: "Languages",
-    items: ["Python", "SQL"]
+    items: ["Hindi (Fluent)", "English (Fluent)"]
   },
   {
-    category: "Libraries", 
-    items: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Scrapy"]
-  },
-  {
-    category: "Data Tools",
-    items: ["Power BI", "Excel (Advanced)", "Google Colab"]
-  },
-  {
-    category: "Databases",
-    items: ["MySQL", "MongoDB"]
-  },
-  {
-    category: "Frameworks",
-    items: ["Streamlit", "Flask (Basic)", "Django (Learning Phase)"]
-  },
-  {
-    category: "APIs & Concepts",
-    items: ["Groq API", "OpenAI API", "RESTful APIs", "EDA", "OOP", "Data Structures", "API Integration", "Error Handling"]
-  },
-  {
-    category: "Version Control",
-    items: ["Git", "GitHub"]
+    category: "Certifications",
+    items: ["Professional Diploma in Graphic Designing from TechCluster Design Wala"]
   }
 ];
 
 const projects: Project[] = [
   {
     id: "1",
-    name: "US Logistics Tech Strategy Research",
-    description: "Scraped data on top US logistics companies from multiple sources using Scrapy. Preprocessed data using Pandas and NumPy to clean and structure key company attributes. Integrated Groq API to enrich company profiles with ARR growth insights and tech stack data. Uploaded structured datasets to MongoDB for scalable access and analysis.",
-    technologies: ["Python", "WebScraper", "Pandas", "MongoDB", "Groq API"],
+    name: "Personal Design Portfolio",
+    description: "Created a comprehensive visual portfolio showcasing various design projects including logos, posters, and digital artwork. Utilized Adobe Illustrator and Photoshop to demonstrate proficiency in design tools and creative problem-solving.",
+    technologies: ["Adobe Illustrator", "Adobe Photoshop", "Typography", "Layout Design"],
     github: "https://github.com/1608Nikita",
     featured: true
   },
   {
     id: "2", 
-    name: "AI Chatbot using Groq & OpenAI",
-    description: "Built a conversational chatbot using OpenAI for generating human-like responses. Integrated Groq API for low-latency language processing. Deployed via Streamlit to offer a user-friendly web interface. Designed modular intent handling for extensibility and domain-specific customization.",
-    technologies: ["Python", "Groq API", "OpenAI API", "Streamlit"],
+    name: "UI/UX Design Projects",
+    description: "Developed wireframes and prototypes for mobile and web applications using Figma. Focused on user-centered design principles, creating intuitive interfaces and smooth user experiences. Projects include app mockups and website redesigns.",
+    technologies: ["Figma", "UI/UX Design", "Wireframing", "Prototyping"],
     github: "https://github.com/1608Nikita",
     featured: true
   },
   {
     id: "3",
-    name: "Email Automation System",
-    description: "Automated email sending using Python's SMTP libraries for bulk communication. Integrated Pandas to manage recipient data from Excel sheets. Implemented error handling and logging for failed deliveries and retries. Scheduled scripts to run periodically using task schedulers.",
-    technologies: ["Python", "SMTP", "Pandas"],
+    name: "Academic Design Projects",
+    description: "Completed various design assignments during BCA coursework and certification program. Projects range from brand identity design to digital illustrations, demonstrating versatility in graphic design applications.",
+    technologies: ["CorelDRAW", "Adobe Creative Suite", "Brand Design"],
     github: "https://github.com/1608Nikita"
   }
 ];
@@ -190,9 +178,9 @@ GitHub: /github
     description: "Show contact information or open social links",
     execute: async (args: string[]) => {
       const socialLinks = {
-        insta: "https://www.instagram.com/_nikita.py?igsh=MWd3bzFvangyZHNkeQ==",
-        instagram: "https://www.instagram.com/_nikita.py?igsh=MWd3bzFvangyZHNkeQ==",
-        linkedin: "https://www.linkedin.com/in/nikita-yadav-5620902b2/",
+        insta: "https://instagram.com/nikita_designer",
+        instagram: "https://instagram.com/nikita_designer",
+        linkedin: "https://linkedin.com/in/nikita-yadav-74b3b0356",
         github: "https://github.com/1608Nikita"
       };
 
@@ -215,16 +203,16 @@ Location: ${personalInfo.location}
 
 I'm always open to discussing:
   • New opportunities
-  • Exciting projects  
-  • Tech collaborations
-  • AI/ML innovations
+  • Exciting design projects  
+  • Creative collaborations
+  • UI/UX innovations
 
-Phone: +91 8085546767
+Phone: +91 6263002690
 
 Find me online:
-  • LinkedIn: https://www.linkedin.com/in/nikita-yadav-5620902b2/
+  • LinkedIn: https://linkedin.com/in/nikita-yadav-74b3b0356
   • GitHub: https://github.com/1608Nikita
-  • Instagram: https://www.instagram.com/_nikita.py?igsh=MWd3bzFvangyZHNkeQ==
+  • Instagram: https://instagram.com/nikita_designer
 
 Usage: 'contact [platform]' to open directly (insta, linkedin, github)
 
