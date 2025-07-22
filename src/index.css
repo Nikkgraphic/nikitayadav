@@ -6,48 +6,48 @@
 
 @layer base {
   :root {
-    /* Terminal dark theme */
-    --background: 0 0% 2%;
-    --foreground: 120 100% 85%;
+    /* Pure black terminal background */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 3%;
-    --card-foreground: 120 100% 85%;
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 3%;
-    --popover-foreground: 120 100% 85%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Neon green primary (classic terminal) */
+    /* Bright green for commands/primary (classic terminal) */
     --primary: 120 100% 50%;
-    --primary-foreground: 0 0% 2%;
+    --primary-foreground: 0 0% 0%;
 
-    /* Neon cyan secondary */
-    --secondary: 180 100% 50%;
-    --secondary-foreground: 0 0% 2%;
+    /* Terminal red for error buttons */
+    --secondary: 0 100% 50%;
+    --secondary-foreground: 0 0% 100%;
 
     /* Muted terminal gray */
-    --muted: 0 0% 8%;
-    --muted-foreground: 120 50% 65%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
 
-    /* Neon blue accent */
-    --accent: 210 100% 60%;
-    --accent-foreground: 0 0% 2%;
+    /* Bright blue for prompts */
+    --accent: 210 100% 65%;
+    --accent-foreground: 0 0% 0%;
 
-    /* Neon red for errors/warnings */
-    --destructive: 0 100% 60%;
-    --destructive-foreground: 0 0% 95%;
+    /* Bright red for errors */
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
 
     /* Terminal borders */
-    --border: 120 30% 15%;
-    --input: 120 30% 8%;
+    --border: 120 30% 20%;
+    --input: 0 0% 5%;
     --ring: 120 100% 50%;
 
     /* Terminal effects */
     --terminal-glow: 120 100% 50%;
-    --terminal-cursor: 120 100% 85%;
+    --terminal-cursor: 120 100% 50%;
     --terminal-selection: 120 100% 20%;
     
     /* Gradients */
-    --gradient-terminal: linear-gradient(135deg, hsl(120 100% 20%), hsl(180 100% 15%));
+    --gradient-terminal: linear-gradient(135deg, hsl(0 0% 0%), hsl(0 0% 5%));
     --gradient-glow: radial-gradient(circle, hsl(120 100% 50% / 0.3), transparent 70%);
     
     /* Shadows and glows */
@@ -129,15 +129,14 @@
 @layer components {
   /* Terminal styles */
   .terminal-container {
-    @apply relative h-screen w-full bg-background overflow-hidden;
-    background-image: var(--gradient-terminal);
+    @apply relative h-screen w-full overflow-hidden;
+    background: #000000;
   }
 
   .terminal-window {
-    @apply relative h-full w-full backdrop-blur-sm flex flex-col;
-    background: rgba(0, 0, 0, 0.8);
-    border: 1px solid hsl(var(--border));
-    box-shadow: var(--shadow-terminal);
+    @apply relative h-full w-full flex flex-col;
+    background: #000000;
+    border: 1px solid #00FF00;
   }
 
   .terminal-header {
@@ -183,14 +182,13 @@
 
   .terminal-prompt {
     @apply font-bold;
-    color: #5DADE2 !important;
-    text-shadow: 0 0 5px #5DADE2;
+    color: hsl(var(--accent)) !important;
   }
 
   .terminal-input {
     @apply bg-transparent border-none outline-none font-mono text-sm;
-    color: #FFFFFF !important;
-    caret-color: #00FF00 !important;
+    color: hsl(var(--foreground)) !important;
+    caret-color: hsl(var(--primary)) !important;
     padding: 0;
     margin: 0;
   }
@@ -203,34 +201,29 @@
 
   .terminal-cursor {
     @apply inline-block w-2 h-5 ml-1;
-    background-color: #00FF00 !important;
+    background-color: hsl(var(--primary)) !important;
     animation: blink 1s infinite;
-    box-shadow: 0 0 10px #00FF00;
   }
 
   .terminal-output {
     @apply whitespace-pre-wrap;
-    color: #FFFFFF;
+    color: hsl(var(--foreground));
   }
 
   .terminal-output.success {
-    color: #00FF00;
-    text-shadow: 0 0 10px #00FF00;
+    color: hsl(var(--primary));
   }
 
   .terminal-output.error {
-    color: #FF6B6B;
-    text-shadow: 0 0 10px #FF6B6B;
+    color: hsl(var(--destructive));
   }
 
   .terminal-output.info {
-    color: #00FF00;
-    text-shadow: 0 0 8px #00FF00;
+    color: hsl(var(--primary));
   }
 
   .terminal-output.warning {
     color: #FFD93D;
-    text-shadow: 0 0 8px #FFD93D;
   }
 
   /* Neon glow effects */
