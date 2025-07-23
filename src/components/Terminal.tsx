@@ -163,7 +163,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
           <div className="terminal-button bg-secondary"></div>
           <div className="terminal-button bg-primary"></div>
         </div>
-        <div className="terminal-title">Administrator: Command Prompt - NikitaYadav@portfolio</div>
+        
         <div className="flex items-center space-x-2">
           <span className="text-xs text-muted-foreground">Connected</span>
           <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
@@ -171,7 +171,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
       </div>
 
       <div ref={contentRef} className="terminal-content">
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-hidden">
           <AnimatePresence>
             {lines.filter(line => line).map((line, index) => (
               <motion.div
