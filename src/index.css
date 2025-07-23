@@ -153,22 +153,18 @@
 
   .terminal-content {
     @apply flex-1 overflow-y-auto p-4 font-mono text-sm flex flex-col;
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--primary)) transparent;
     min-height: 0;
   }
 
-  .terminal-content::-webkit-scrollbar {
-    width: 6px;
+  /* Hide scrollbar for webkit browsers */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
-
-  .terminal-content::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .terminal-content::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted-foreground));
-    border-radius: 3px;
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 
   .terminal-line {

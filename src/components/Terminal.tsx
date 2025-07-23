@@ -171,7 +171,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
       </div>
 
       <div ref={contentRef} className="terminal-content">
-        <div className="flex-1 overflow-hidden">
+        <div className="flex-1 overflow-y-auto scrollbar-hide">
           <AnimatePresence>
             {lines.filter(line => line).map((line, index) => (
               <motion.div
