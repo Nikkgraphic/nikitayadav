@@ -13,7 +13,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
   const [isTyping, setIsTyping] = useState(false);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
-  const [showInput, setShowInput] = useState(false);
+  const [showCurrentInput, setShowCurrentInput] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -56,7 +56,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
       } else {
         clearInterval(interval);
         // Show input after all messages are typed
-        setTimeout(() => setShowInput(true), 300);
+        setTimeout(() => setShowCurrentInput(true), 300);
       }
     }, 800);
 
@@ -91,6 +91,9 @@ export default function Terminal({ onCommand }: TerminalProps) {
     const trimmedCommand = command.trim();
     if (!trimmedCommand) return;
 
+    // Hide current input
+    setShowCurrentInput(false);
+
     // Add command to history
     setCommandHistory(prev => [...prev, trimmedCommand]);
     setHistoryIndex(-1);
@@ -104,6 +107,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
     // Handle special commands
     if (typeof response === 'object' && response.content === 'CLEAR_SCREEN') {
       setLines([]);
+      setShowCurrentInput(true);
       return;
     }
     
@@ -117,6 +121,9 @@ export default function Terminal({ onCommand }: TerminalProps) {
         setLines(prev => [...prev, response]);
       }
     }
+
+    // Show input for next command
+    setTimeout(() => setShowCurrentInput(true), 300);
 
     onCommand?.(trimmedCommand);
   };
@@ -206,34 +213,34 @@ export default function Terminal({ onCommand }: TerminalProps) {
               </motion.div>
             ))}
           </AnimatePresence>
-        </div>
 
-        {showInput && (
-          <motion.div 
-            className="flex items-center mt-2"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <form onSubmit={handleSubmit} className="flex items-center w-full">
-              <span className="terminal-prompt">{"C:\\Users\\nikita>"}</span>
-              <input
-                ref={inputRef}
-                type="text"
-                value={currentInput}
-                onChange={(e) => setCurrentInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                className="terminal-input flex-1"
-                placeholder=""
-                disabled={isTyping}
-                autoComplete="off"
-                spellCheck="false"
-                autoFocus
-              />
-              {!isTyping && <span className="terminal-cursor"></span>}
-            </form>
-          </motion.div>
-        )}
+          {showCurrentInput && (
+            <motion.div 
+              className="flex items-center mt-2"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <form onSubmit={handleSubmit} className="flex items-center w-full">
+                <span className="terminal-prompt">{"C:\\Users\\nikita>"}</span>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={currentInput}
+                  onChange={(e) => setCurrentInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  className="terminal-input flex-1"
+                  placeholder=""
+                  disabled={isTyping}
+                  autoComplete="off"
+                  spellCheck="false"
+                  autoFocus
+                />
+                {!isTyping && <span className="terminal-cursor"></span>}
+              </form>
+            </motion.div>
+          )}
+        </div>
       </div>
     </div>
   );
