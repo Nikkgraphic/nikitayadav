@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { commandHandler } from '../lib/commands';
 import { TerminalLine } from '../types/terminal';
+import SnakeGame from './SnakeGame';
 
 interface TerminalProps {
   onCommand?: (command: string) => void;
@@ -14,6 +15,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [showCurrentInput, setShowCurrentInput] = useState(false);
+  const [showSnakeGame, setShowSnakeGame] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -38,13 +40,13 @@ export default function Terminal({ onCommand }: TerminalProps) {
       { type: 'system' as const, content: '(c) Microsoft Corporation. All rights reserved.' },
       { type: 'system' as const, content: '' },
 
-      { type: 'command' as const, content: 'C:\\Users\\nikita>' },
+      { type: 'command' as const, content: 'command>' },
       { type: 'system' as const, content: '' },
       { type: 'output' as const, content: "Hi, I'm Nikita Yadav, a Graphic & UI/UX Designer." },
       { type: 'output' as const, content: "Welcome to my interactive portfolio terminal!" },
       { type: 'output' as const, content: "Type 'help' to see available commands." },
       { type: 'system' as const, content: '' },
-      { type: 'info' as const, content: 'help | about | projects | skills | contact | clear' }
+      { type: 'info' as const, content: 'help | about | projects | skills | contact | snake | clear' }
     ];
 
     let index = 0;
@@ -99,7 +101,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
     setHistoryIndex(-1);
 
     // Add command line to terminal
-    setLines(prev => [...prev, { type: 'command', content: `C:\\Users\\nikita>${trimmedCommand}` }]);
+    setLines(prev => [...prev, { type: 'command', content: `command>${trimmedCommand}` }]);
 
     // Execute command
     const response = await commandHandler(trimmedCommand);
@@ -108,6 +110,13 @@ export default function Terminal({ onCommand }: TerminalProps) {
     if (typeof response === 'object' && response.content === 'CLEAR_SCREEN') {
       setLines([]);
       setShowCurrentInput(true);
+      return;
+    }
+
+    if (typeof response === 'object' && response.content === 'LAUNCH_SNAKE_GAME') {
+      setShowSnakeGame(true);
+      setLines(prev => [...prev, { type: 'output', content: 'Launching Snake Game... Press ESC to exit.' }]);
+      setTimeout(() => setShowCurrentInput(true), 300);
       return;
     }
     
@@ -162,6 +171,10 @@ export default function Terminal({ onCommand }: TerminalProps) {
     }
   };
 
+  const handleExitSnakeGame = () => {
+    setShowSnakeGame(false);
+  };
+
   return (
     <div className="terminal-window">
       <div className="terminal-header">
@@ -171,7 +184,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
         
         <div className="flex items-center space-x-2">
           <span className="text-xs text-muted-foreground">Connected</span>
-          <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
         </div>
       </div>
 
@@ -220,7 +233,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
               transition={{ duration: 0.3 }}
             >
               <form onSubmit={handleSubmit} className="flex items-center w-full">
-                <span className="terminal-prompt">{"C:\\Users\\nikita>"}</span>
+                <span className="terminal-prompt">{"command>"}</span>
                 <input
                   ref={inputRef}
                   type="text"
@@ -239,7 +252,9 @@ export default function Terminal({ onCommand }: TerminalProps) {
             </motion.div>
           )}
         </div>
-      </div>
+
+      {showSnakeGame && <SnakeGame onExit={handleExitSnakeGame} />}
+    </div>
     </div>
   );
 }

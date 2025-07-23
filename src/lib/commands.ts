@@ -76,6 +76,7 @@ Available commands:
   projects  - List portfolio projects
   resume    - View resume and download link
   contact   - Get contact information
+  snake     - Play Snake game
   clear     - Clear the terminal screen
   theme     - Toggle light/dark theme
   chat      - Start AI-powered conversation
@@ -287,6 +288,13 @@ drwxr-xr-x  skills/
 -rw-r--r--  about.md
       `;
     }
+  },
+  {
+    name: "snake",
+    description: "Play Snake game",
+    execute: async () => {
+      return { type: 'system', content: 'LAUNCH_SNAKE_GAME' };
+    }
   }
 ];
 
@@ -300,6 +308,11 @@ export const commandHandler = async (input: string): Promise<TerminalLine | stri
   // Handle clear command specially
   if (commandName === 'clear' || commandName === 'cls') {
     return { type: 'system', content: 'CLEAR_SCREEN' };
+  }
+
+  // Handle snake game command specially
+  if (commandName === 'snake') {
+    return { type: 'system', content: 'LAUNCH_SNAKE_GAME' };
   }
 
   // Find command by name or alias
