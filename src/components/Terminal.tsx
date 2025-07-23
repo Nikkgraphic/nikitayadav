@@ -40,7 +40,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
       { type: 'system' as const, content: '(c) Microsoft Corporation. All rights reserved.' },
       { type: 'system' as const, content: '' },
 
-      { type: 'command' as const, content: 'command>' },
+      { type: 'command' as const, content: 'nikita@portfolio>' },
       { type: 'system' as const, content: '' },
       { type: 'output' as const, content: "Hi, I'm Nikita Yadav, a Graphic & UI/UX Designer." },
       { type: 'output' as const, content: "Welcome to my interactive portfolio terminal!" },
@@ -84,7 +84,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
         return newLines;
       });
       
-      await new Promise(resolve => setTimeout(resolve, 20));
+      await new Promise(resolve => setTimeout(resolve, 13));
     }
     setIsTyping(false);
   }, []);
@@ -101,7 +101,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
     setHistoryIndex(-1);
 
     // Add command line to terminal
-    setLines(prev => [...prev, { type: 'command', content: `command>${trimmedCommand}` }]);
+    setLines(prev => [...prev, { type: 'command', content: `nikita@portfolio>${trimmedCommand}` }]);
 
     // Execute command
     const response = await commandHandler(trimmedCommand);
@@ -233,7 +233,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
               transition={{ duration: 0.3 }}
             >
               <form onSubmit={handleSubmit} className="flex items-center w-full">
-                <span className="terminal-prompt">{"command>"}</span>
+                <span className="terminal-prompt">{"nikita@portfolio>"}</span>
                 <input
                   ref={inputRef}
                   type="text"
