@@ -165,10 +165,8 @@ export default function Terminal({ onCommand }: TerminalProps) {
   return (
     <div className="terminal-window">
       <div className="terminal-header">
-        <div className="terminal-controls">
-          <div className="terminal-button bg-destructive"></div>
-          <div className="terminal-button bg-secondary"></div>
-          <div className="terminal-button bg-primary"></div>
+        <div className="text-sm font-mono font-bold">
+          NikitaYadav
         </div>
         
         <div className="flex items-center space-x-2">
